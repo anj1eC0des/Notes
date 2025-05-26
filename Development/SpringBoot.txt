@@ -44,3 +44,55 @@ Additional Tips
 Documentation: Ensure each project is well-documented to help you understand and showcase your work.
 Testing: Implement thorough testing using JUnit and MockMVC to ensure reliability.
 Continuous Integration: Set up CI/CD pipelines for automated testing and deployment.
+
+
+
+Making the first app
+
+Step 1: Set Up Your Development Environment
+Install Java Development Kit (JDK): Ensure you have JDK 11 or later installed.
+Install IDE: Use an IDE like IntelliJ IDEA or Eclipse.
+Install Maven: Ensure Maven is installed for dependency management.
+Step 2: Create a New Spring Boot Project
+Initialize Project: Use Spring Initializr to create a new Spring Boot project.
+Dependencies: Select Spring Web, Spring Data JPA, and H2 Database (for simplicity).
+Packaging: Choose Maven as the build tool.
+Java Version: Select Java 11 or later.
+Step 3: Define Project Structure
+Create Packages: Organize your project into packages:
+com.example.bankingapp: Main package.
+com.example.bankingapp.controller: For REST controllers.
+com.example.bankingapp.service: For service layer.
+com.example.bankingapp.repository: For data access layer.
+com.example.bankingapp.model: For entity classes.
+com.example.bankingapp.dto: For data transfer objects.
+Step 4: Create Entity Classes
+Account Entity: Define the Account entity with fields like id, accountNumber, balance, accountHolderName.
+
+Step 5: Create Repository Interface
+AccountRepository: Create a repository interface for Account.
+
+Step 6: Implement Service Layer
+AccountService: Create a service class to handle business logic.
+
+Step 7: Create REST Controllers
+AccountController: Create a controller to expose REST endpoints.
+
+Step 8: Add Validation
+Validation Annotations: Add validation annotations to the Account entity.
+
+Step 9: Configure Application Properties
+application.properties: Configure database and other properties.
+
+Step 10: Implement Testing
+JUnit Tests: Write unit tests for your service and controller layers.
+
+Step 11: Containerization and Deployment
+Dockerfile: Create a Dockerfile to containerize your application.
+
+Docker Commands: Build and run the Docker image.
+
+Step 12: Documentation and Deployment
+Swagger: Integrate Swagger for API documentation.
+
+Deployment: Deploy your application to a cloud platform like AWS or Azure.
