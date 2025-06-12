@@ -1,0 +1,345 @@
+Problem Statement: Hospital Management System
+
+Objective: Design and implement a simplified Hospital Management System using a microservices architecture with Java Spring Boot. This project aims to provide a practical understanding of building distributed systems, handling data consistency, and applying various Spring Boot features.
+
+ 
+
+Project Goals:
+
+Develop a set of independent, deployable services.
+
+Implement communication between services.
+
+Manage data persistence for each service.
+
+Apply basic security principles.
+
+Gain experience with Spring Boot, Spring Data JPA, and related technologies.
+
+ 
+
+System Overview:
+
+The Hospital Management System will consist of the following core microservices:
+
+Patient Service: Manages patient information.
+
+Doctor Service: Manages doctor information.
+
+Appointment Service: Manages appointment scheduling.
+
+Department Service: Manages hospital departments.
+
+Billing Service: Handles patient billing and payments.
+
+Detailed Requirements:
+
+ 
+
+1. Patient Service:
+
+ 
+
+Functionality:
+
+Create, Read, Update, and Delete (CRUD) patient records.
+
+Store patient demographics (name, age, gender, contact information, address).
+
+Implement patient search functionality (by name, ID).
+
+Data Model:
+
+Patient entity with fields: patientId (primary key), name, age, gender, contactNumber, address.
+
+API Endpoints:
+
+POST /patients: Create a new patient.
+
+GET /patients/{id}: Retrieve a patient by ID.
+
+GET /patients: Retrieve all patients.
+
+PUT /patients/{id}: Update an existing patient.
+
+DELETE /patients/{id}: Delete a patient.
+
+GET /patients/search?name={name}: Search patients by name.
+
+Technologies: Spring Boot, Spring Data JPA, (e.g., MySQL, H2).                                                                                                                                                                                          
+
+ 
+
+2. Doctor Service:
+
+ 
+
+Functionality:
+
+CRUD operations for doctor records.
+
+Store doctor details (name, specialization, department ID, contact information).
+
+Retrieve doctors by specialization or department.
+
+Data Model:
+
+Doctor entity with fields: doctorId (primary key), name, specialization, departmentId (foreign key), contactNumber.
+
+API Endpoints:
+
+POST /doctors: Create a new doctor.
+
+GET /doctors/{id}: Retrieve a doctor by ID.
+
+GET /doctors: Retrieve all doctors.
+
+PUT /doctors/{id}: Update an existing doctor.
+
+DELETE /doctors/{id}: Delete a doctor.
+
+GET /doctors/specialization/{specialization}: Get doctors by specialization
+
+GET /doctors/department/{departmentId}: Get doctors in a department
+
+Technologies: Spring Boot, Spring Data JPA, (e.g., MySQL, PostgreSQL, H2).
+
+ 
+
+3. Appointment Service:
+
+ 
+
+Functionality:
+
+Schedule, retrieve, update, and cancel appointments.
+
+Store appointment details (appointment ID, patient ID, doctor ID, appointment date/time, status).
+
+Retrieve appointments by patient or doctor.
+
+Implement appointment status (e.g., scheduled, confirmed, cancelled, completed).
+
+ 
+
+Data Model:
+
+Appointment entity with fields: appointmentId (primary key), patientId (foreign key), doctorId (foreign key), appointmentDateTime, status.
+
+API Endpoints:
+
+POST /appointments: Create a new appointment.
+
+GET /appointments/{id}: Retrieve an appointment by ID.
+
+GET /appointments: Retrieve all appointments.
+
+PUT /appointments/{id}: Update an existing appointment.
+
+DELETE /appointments/{id}: Delete an appointment.
+
+GET /appointments/patient/{patientId}: Retrieve appointments for a patient.
+
+GET /appointments/doctor/{doctorId}: Retrieve appointments for a doctor.
+
+Technologies: Spring Boot, Spring Data JPA, (e.g., MySQL, PostgreSQL, H2).
+
+Communication: This service will communicate with Patient Service and Doctor Service to retrieve patient and doctor information (using REST or Spring Cloud Feign).
+
+ 
+
+4. Department Service:
+
+ 
+
+Functionality:
+
+ 
+
+CRUD operations for hospital departments.
+
+Store department information (department ID, name, location).
+
+Data Model:
+
+Department entity with fields: departmentId (primary key), name, location.
+
+API Endpoints:
+
+POST /departments: Create a new department.
+
+GET /departments/{id}: Retrieve a department by ID.
+
+GET /departments: Retrieve all departments.
+
+PUT /departments/{id}: Update an existing department.
+
+DELETE /departments/{id}: Delete a department.
+
+Technologies: Spring Boot, Spring Data JPA, (e.g., MySQL, PostgreSQL, H2).
+
+ 
+
+5. Billing Service:
+
+ 
+
+Functionality:
+
+Generate bills for patients.
+
+Store billing information (bill ID, patient ID, appointment ID, total amount, payment status, payment date).
+
+Update payment status.
+
+Retrieve billing history for a patient.
+
+ 
+
+Data Model:
+
+Bill entity with fields: billId (primary key), patientId (foreign key), appointmentId (foreign key), totalAmount, paymentStatus, paymentDate.
+
+API Endpoints:
+
+POST /bills: Create a new bill.
+
+GET /bills/{id}: Retrieve a bill by ID.
+
+GET /bills: Retrieve all bills.
+
+PUT /bills/{id}: Update an existing bill.
+
+DELETE /bills/{id}: Delete a bill.
+
+GET /bills/patient/{patientId}: Retrieve bills for a patient.
+
+Technologies: Spring Boot, Spring Data JPA, (e.g., MySQL, PostgreSQL, H2).
+
+ 
+
+Communication: This service will communicate with Appointment Service and Patient Service.
+
+ 
+
+Technical Requirements:
+
+Java: Use Java 17 or later.
+
+Spring Boot: Use Spring Boot 3.x.
+
+Database: Choose a relational database (MySQL, H2).
+
+Build Tool: Use Maven or Gradle.
+
+API Communication:
+
+RESTful APIs with JSON.
+
+Consider using Spring Cloud Feign or WebClient for inter-service communication.
+
+Data Persistence: Spring Data JPA.
+
+Logging: Implement logging using Spring Boot's default logging or Logback.
+
+Exception Handling: Implement proper exception handling and return meaningful error responses.
+
+Testing: Write unit and integration tests using JUnit and Spring Test.
+
+Documentation: Provide API documentation using Swagger or OpenAPI.
+
+ 
+
+ 
+
+Service Discovery: Implement service discovery using Spring Cloud Eureka or Consul.
+
+API Gateway: Implement an API gateway using Spring Cloud Gateway or Zuul.
+
+Configuration Management: Use Spring Cloud Config for externalized configuration.
+
+Security: Implement basic authentication and authorization using Spring Security.
+
+Circuit Breaker: Implement Circuit Breaker using Resilience4j
+
+Message Queue: Use a message queue (e.g., RabbitMQ) for asynchronous communication (e.g., sending notifications).
+
+Monitoring: Implement monitoring using Prometheus and Grafana. (Optional)
+
+ 
+
+Development Process:
+
+ 
+
+Project Setup:
+
+Create a Spring Boot project for each microservice.
+
+Configure the database connection for each service.
+
+Set up basic project structure and dependencies.
+
+Service Implementation:
+
+Implement the data models (entities).
+
+Create RESTful controllers and define API endpoints.
+
+Implement business logic and data access using Spring Data JPA.
+
+Implement communication between services.
+
+ 
+
+Testing:
+
+Write unit tests for individual components.
+
+Write integration tests to verify the interaction between services.(Optional)
+
+ 
+
+Documentation:
+
+Document the API endpoints using Swagger or OpenAPI.
+
+Provide a README file with instructions on how to build and run the application.
+
+Insomnia tool to test the Rest service manually
+
+ 
+
+Deployment
+
+Containerize the application using Docker. (Optional):
+
+Deploy the application to a local or cloud environment(Optional):.
+
+ 
+
+Assessment Criteria:
+
+Code Quality: Clean, well-structured, and maintainable code.
+
+Functionality: Correct implementation of the required features.
+
+Testing: Thorough unit and integration tests.
+
+Documentation: Clear and concise documentation.
+
+Microservices Architecture: Proper implementation of the microservices principles.
+
+Problem-Solving: Ability to solve problems and overcome challenges.
+
+The Hospital Management System will consist of the following core microservices:
+
+Patient Service: Manages patient information.
+
+Doctor Service: Manages doctor information.
+
+Appointment Service: Manages appointment scheduling.
+
+Department Service: Manages hospital departments.
+
+Billing Service: Handles patient billing and payments.
